@@ -21,9 +21,19 @@ app.get("/herois", function (req, res) {
 
 // Read by ID (Visualizar um item pelo ID)
 app.get("/herois/:id", function (req, res) {
+  // Recebemos o ID que iremos buscar
   const id = req.params.id;
 
+  // Buscamos o item dentro da lista, utilizando o ID
   const item = herois[id - 1];
+
+  if (!item) {
+    // Envia uma resposta de não encontrado
+    res.status(404).send("Item não encontrado.");
+
+    // Encerra a função
+    return;
+  }
 
   res.send(item);
 });
@@ -45,7 +55,7 @@ app.put("/herois/:id", function (req, res) {
   const id = req.params.id;
 
   // Pegamos a nova informação que está sendo enviada
-  const item = req.body.nome;
+  const item = req.body;
 
   // Atualizamos a informação na lista
   herois[id - 1] = item;
