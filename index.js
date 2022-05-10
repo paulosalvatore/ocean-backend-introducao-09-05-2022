@@ -16,7 +16,7 @@ const herois = ["Mulher Maravilha", "Capitã Marvel", "Homem de Ferro"];
 
 // Read All (Ler todos os itens)
 app.get("/herois", function (req, res) {
-  res.send(herois);
+  res.send(herois.filter(Boolean));
 });
 
 // Read by ID (Visualizar um item pelo ID)
