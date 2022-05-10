@@ -53,6 +53,17 @@ app.put("/herois/:id", function (req, res) {
   res.send("Item editado com sucesso!");
 });
 
+// Delete (Remover um item)
+app.delete("/herois/:id", function (req, res) {
+  // Obtemos o ID do registro que será excluído
+  const id = req.params.id;
+
+  // Removemos o item da lista
+  delete herois[id - 1];
+
+  res.send("Item removido com sucesso!");
+});
+
 app.listen(3000, () =>
   console.log("Aplicação rodando em http://localhost:3000")
 );
