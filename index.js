@@ -39,6 +39,20 @@ app.post("/herois", function (req, res) {
   res.send("Item criado com sucesso!");
 });
 
+// Update (Editar um item)
+app.put("/herois/:id", function (req, res) {
+  // Obtemos o ID do item a ser atualizado
+  const id = req.params.id;
+
+  // Pegamos a nova informação que está sendo enviada
+  const item = req.body.nome;
+
+  // Atualizamos a informação na lista
+  herois[id - 1] = item;
+
+  res.send("Item editado com sucesso!");
+});
+
 app.listen(3000, () =>
   console.log("Aplicação rodando em http://localhost:3000")
 );
