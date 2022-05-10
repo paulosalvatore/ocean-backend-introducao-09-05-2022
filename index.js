@@ -19,6 +19,15 @@ app.get("/herois", function (req, res) {
   res.send(herois);
 });
 
+// Read by ID (Visualizar um item pelo ID)
+app.get("/herois/:id", function (req, res) {
+  const id = req.params.id;
+
+  const item = herois[id - 1];
+
+  res.send(item);
+});
+
 // Create (Criar um item)
 app.post("/herois", function (req, res) {
   // Obtemos o nome que foi enviado no body da requisição
