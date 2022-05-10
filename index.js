@@ -43,6 +43,15 @@ app.post("/herois", function (req, res) {
   // Obtemos o nome que foi enviado no body da requisição
   const item = req.body.nome;
 
+  if (!item) {
+    res
+      .status(400)
+      .send("Você deve informar a propriedade 'nome' no corpo da requisição.");
+
+    // Encerra a função
+    return;
+  }
+
   // Adicionamos esse item obtido dentro da lista de heróis
   herois.push(item);
 
