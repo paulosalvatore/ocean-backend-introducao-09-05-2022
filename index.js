@@ -54,6 +54,14 @@ app.put("/herois/:id", function (req, res) {
   // Obtemos o ID do item a ser atualizado
   const id = req.params.id;
 
+  if (!herois[id - 1]) {
+    // Envia uma resposta de não encontrado
+    res.status(404).send("Item não encontrado.");
+
+    // Encerra a função
+    return;
+  }
+
   // Pegamos a nova informação que está sendo enviada
   const item = req.body;
 
@@ -67,6 +75,14 @@ app.put("/herois/:id", function (req, res) {
 app.delete("/herois/:id", function (req, res) {
   // Obtemos o ID do registro que será excluído
   const id = req.params.id;
+
+  if (!herois[id - 1]) {
+    // Envia uma resposta de não encontrado
+    res.status(404).send("Item não encontrado.");
+
+    // Encerra a função
+    return;
+  }
 
   // Removemos o item da lista
   delete herois[id - 1];
